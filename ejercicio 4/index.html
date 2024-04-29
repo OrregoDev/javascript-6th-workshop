@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Funciones Declaradas vs Expresadas</title>
+</head>
+
+<body>
+  <h1>Funciones Declaradas vs Expresadas</h1>
+  <h2>¿Qué sucedió cuando intentaste llamar a las funciones antes de su declaración?</h2>
+  <p>R/ Al tratar de llmar la funcion declarada el codigo funcionó sin errores pero la funcion expresada arroja un error
+    ya que no se puede acceder a la misma antes de declararse debido a que estas no son elevadas.</p>
+  <h2>¿Cómo difieren los resultados entre la función declarada y la función expresada?</h2>
+  <p>R/ La función declarada fue llamada con éxito antes de su declaración debido al hoisting, por otro lado,
+    la función expresada no fue llamada con éxito antes de su declaración porque las expresiones de
+    funciones no son elevadas.</p>
+  <h2>¿Qué indica esto sobre qué el JavaScript maneja estas dos diferentes declaraciones de funciones?</h2>
+  <p>R/ Esto indica que JavaScript maneja las declaraciones de funciones y las expresiones de funciones de manera
+    diferente en
+    términos de hoisting. Las declaraciones de funciones son completamente elevadas, mientras que las expresiones de
+    funciones no son elevadas y, por lo tanto, no pueden ser llamadas antes de su declaración.</p>
+  <script src="app.js"></script>
+</body>
+
+</html>
