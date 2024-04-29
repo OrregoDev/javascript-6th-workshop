@@ -43,7 +43,7 @@ const main = () => {
     }
 
     if (firstQuestion && secondQuestion && thirdQuestion) {
-      alert('Felicidades, tienes un conocimineto solido en variables');
+      alert('Felicidades, tienes un conocimineto solido en scope');
     } else {
       alert('Te aconsejo que repases sobre variables y vuelvas a intentarlo');
     }
