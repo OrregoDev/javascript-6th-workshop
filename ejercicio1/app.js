@@ -34,7 +34,7 @@ const main = () => {
       'La variable "blockVariable" se puede acceder desde otras partes del codigo? Pulsa OK si la afirmacion anterior es correcta'
     );
 
-    if (thirdQuestion == 1) {
+    if (thirdQuestion) {
       alert('Correcto, has entendido el concepto de variable de bloque');
     } else {
       alert(

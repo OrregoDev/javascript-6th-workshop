@@ -1,26 +1,3 @@
-// vars call
-console.log('Valor de a:', a);
-console.log('Valor de b:', b);
-console.log('Valor de c:', c);
-
-// functions call
-console.log('Resultado de funcionDeclarada:', funcionDeclarada());
-console.log('Resultado de funcionExpresada:', funcionExpresada());
-
-// vars declaration
-var a = 1;
-let b = 2;
-const c = 3;
-
-// functions declarations
-function funcionDeclarada() {
-  return 'Función declarada ha sido llamada.';
-}
-
-const funcionExpresada = function () {
-  return 'Función expresada ha sido llamada.';
-};
-
 // Ejercicio 1
 
 // Primera pregunta
@@ -30,45 +7,45 @@ const main = () => {
       'Teniendo en cuenta el codigo de la imagen, responde las siguientes preguntas:'
     );
     const firstQuestion = confirm(
-      'La variable "globalVariable" se puede acceder desde cualquier lugar del codigo? Pulsa OK si la afirmacion anterior es correcta'
+      'La variable a declarada con var es elevada al principio de su ámbito. Pulsa OK si la afirmacion anterior es correcta'
     );
 
     if (firstQuestion) {
-      alert('Correcto, has entendido el concepto de variable global');
+      alert('¡Correcto!');
     } else {
       alert(
-        'Incorrecto, al ser una variable global el alcance de la misma es de todo el programa'
+        '¡Incorrecto! las variables declaradas con var son elevadas al principio de su ámbito, pero se inicializan con undefined hasta la línea donde realmente se declaran'
       );
     }
 
     const secondQuestion = confirm(
-      'La variable "functionVariable" solo se puede acceder dentro de la funcion? Pulsa OK si la afirmacion anterior es correcta'
+      'Se puede acceder a la variable b declarada con let antes de su declaración dentro del mismo ámbito de bloque. Pulsa OK si la afirmacion anterior es correcta'
     );
 
     if (secondQuestion) {
-      alert('Correcto, has entendido el concepto de variable local');
-    } else {
       alert(
-        'Incorrecto, al ser una variable local el alcance de la misma es dentro de la misma funcion o un bloque dentro de la misma'
+        'Incorrecto, las variables declaradas con let son elevadas pero permanecen en una zona muerta temporal hasta que se inicializan. Intentar acceder a ellas antes de su declaración resultará en un ReferenceError'
       );
+    } else {
+      alert('¡Correcto!');
     }
 
     const thirdQuestion = confirm(
-      'La variable "blockVariable" se puede acceder desde otras partes del codigo? Pulsa OK si la afirmacion anterior es correcta'
+      'Es posible redeclarar la variable c declarada con const dentro del mismo ámbito. Pulsa OK si la afirmacion anterior es correcta'
     );
 
-    if (thirdQuestion == 1) {
-      alert('Correcto, has entendido el concepto de variable de bloque');
-    } else {
+    if (thirdQuestion) {
       alert(
-        'incorrecto, al ser una variable de bloque solo puede ser accesada dentro del mismo bloque'
+        'Incorrecto, las variables declaradas con const no pueden ser redeclaradas dentro del mismo ámbito. Intentar hacerlo resultará en un SyntaxError'
       );
+    } else {
+      alert('¡Correcto!');
     }
 
-    if (firstQuestion && secondQuestion && thirdQuestion) {
-      alert('Felicidades, tienes un conocimineto solido en scope');
+    if (firstQuestion && !secondQuestion && !thirdQuestion) {
+      alert('Felicidades, tienes un conocimineto solido en Hoisting');
     } else {
-      alert('Te aconsejo que repases sobre variables y vuelvas a intentarlo');
+      alert('Te aconsejo que repases sobre Hoisting y vuelvas a intentarlo');
     }
   }
 };
