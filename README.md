@@ -194,12 +194,26 @@ Este ejercicio te permitirá desarrollar un script que demuestra cómo los closu
 
   - En este ejercicio, escribirás un script que utiliza setTimeout() para organizar la ejecución de código en tiempos específicos. Observarás el orden en el que los mensajes se muestran en la consola y reflexionarás sobre el papel del event loop y cómo JavaScript gestiona las operaciones de entrada/salida y las tareas asíncronas.
 
-  **Diseño del Experimento** - Vamos a diseñar un simple experimento para ver cómo el event loop maneja las tareas. - Necesitarás utilizar la función setTimeout() para planificar la ejecución de código.
+  **Diseño del Experimento** 
 
-  **Implementación del Script:** - Inicia tu script mostrando un mensaje en consola que diga "Mensaje 1: Inmediatamente". - Luego, utiliza setTimeout() con un retardo de 0 segundos para mostrar "Mensaje 2: Con timeout de 0 segundos". - Finalmente, configura otro setTimeout() con un retardo de 1 segundo para mostrar "Mensaje 3: Con timeout de 1 segundo".
-  **Ejecución y Observación:** - Ejecuta el script en tu entorno de desarrollo o en la consola del navegador. - Observa el orden en el que aparecen los mensajes y toma nota.
+  - Vamos a diseñar un simple experimento para ver cómo el event loop maneja las tareas. 
+  - Necesitarás utilizar la función setTimeout() para planificar la ejecución de código.
 
-  **Reflexión y Análisis:** - ¿Por qué "Mensaje 2: Con timeout de 0 segundos" no se muestra inmediatamente después de "Mensaje 1: Inmediatamente", a pesar de tener un retardo de 0 segundos? - ¿Que nos dicen este comportamiento sobre el event loop, las macro y micro tareas, y la forma en que JavaScript maneja las operaciones asíncronas?
+  **Implementación del Script:** 
+
+  - Inicia tu script mostrando un mensaje en consola que diga "Mensaje 1: Inmediatamente". 
+  - Luego, utiliza setTimeout() con un retardo de 0 segundos para mostrar "Mensaje 2: Con timeout de 0 segundos". 
+  - Finalmente, configura otro setTimeout() con un retardo de 1 segundo para mostrar "Mensaje 3: Con timeout de 1 segundo".
+  
+  **Ejecución y Observación:** 
+  
+  - Ejecuta el script en tu entorno de desarrollo o en la consola del navegador. 
+  - Observa el orden en el que aparecen los mensajes y toma nota.
+
+  **Reflexión y Análisis:** 
+  
+  - ¿Por qué "Mensaje 2: Con timeout de 0 segundos" no se muestra inmediatamente después de "Mensaje 1: Inmediatamente", a pesar de tener un retardo de 0 segundos? 
+  - ¿Que nos dicen este comportamiento sobre el event loop, las macro y micro tareas, y la forma en que JavaScript maneja las operaciones asíncronas?
 
 #### Ejercicio 7: Considera el siguiente script:
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Event Loop</title>
+</head>
+
+<body>
+  <h1>Event Loop y Web APIs</h1>
+  <h2>¿Por qué "Mensaje 2: Con timeout de 0 segundos" no se muestra inmediatamente después de "Mensaje 1:
+    Inmediatamente", a pesar de tener un retardo de 0 segundos?</h2>
+  <p>R/ Esto sucede porque aunque el setTimeout se haya programado para ejecutarse inmediatamente, su callback no se
+    ejecutará hasta que el motor de JavaScript haya terminado de procesar el código sincrónico actual</p>
+  <h2>¿Que nos dicen este comportamiento sobre el event loop, las macro y micro tareas, y la forma en que JavaScript
+    maneja
+    las operaciones asíncronas?</h2>
+  <p>R/ Este comportamiento ilustra cómo el JavaScript maneja las operaciones asíncronas y sincrónicas en un entorno de
+    un solo
+    hilo. Aunque setTimeout con un retardo de 0 segundos se programa para ejecutarse inmediatamente, el callback no se
+    ejecuta hasta que el motor de JavaScript haya terminado de procesar el código sincrónico actual. Esto permite que el
+    JavaScript maneje eficientemente las operaciones asíncronas y sincrónicas en un entorno de un solo hilo, asegurando
+    que
+    las operaciones asíncronas no bloqueen la ejecución del código sincrónico</p>
+  <script src="app.js"></script>
+</body>
+
+</html>
