@@ -5,14 +5,15 @@ const main = () => {
     'Teniendo en cuenta el codigo de la imagen, predice el orden en que se mostraran los mensajes en consola separados por comas:'
   );
 
-  const userAnswer = prompt('');
+  const userAnswer = prompt('').toLowerCase();
+  console.log(userAnswer);
 
   const realResult = [
-    'Inicio del script',
-    'Fin del script',
-    'Promesa resuelta',
-    'Primer setTimeout',
-    'Segundo setTimeout',
+    'inicio del script',
+    'fin del script',
+    'promesa resuelta',
+    'primer settimeout',
+    'segundo settimeout',
   ];
 
   const mistakes = [];
