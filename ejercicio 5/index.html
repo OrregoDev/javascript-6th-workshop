@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Promesas y Callbacks</title>
+</head>
+
+<body>
+  <h1>Promesas y Callbacks</h1>
+  <h2>¿Qué sucede si cambias el tiempo de resolución de la promesa a 5 segundos o a 1 segundo?</h2>
+  <p>Si se cambia el tiempo de resolución de la promesa a 5 segundos, el callback se ejecutará después de 5 segundos y
+    lo mismo pasa si se cambia a 1 segundo.</p>
+  <h2>¿Cómo se comporta la función si la promesa es rechazada en lugar de resuelta?</h2>
+  <p>Si la promesa es rechazada, el callback no se ejecutará.</p>
+  <h2>¿Puedes modificar la función para que el callback maneje diferentes tipos de información dependiendo del resultado
+    de la
+    promesa?</h2>
+  <p>Sí se puede modificar la función para que el callback reciba información sobre el resultado de la promesa. Para
+    ello,
+    se puede pasar un valor al método resolve de la promesa y luego pasar este valor al callback.</p>
+  <script src="app.js"></script>
+</body>
+
+</html>

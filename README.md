@@ -184,7 +184,7 @@ Este ejercicio te permitirá desarrollar un script que demuestra cómo los closu
     - 5.3: Ejecutar el Callback: Una vez que la promesa se resuelva, debes ejecutar el callback proporcionado. Este callback simplemente mostrará un mensaje en la consola, por ejemplo: "¡Promesa cumplida y callback ejecutado!".
     - 5.4: Invocar la Función: Después de definir la función, deberás invocarla pasando un callback y la promesa que creaste. Observa cómo el callback solo se ejecuta después de que la promesa se resuelve.
     - 5.5: Despues de invocar la funcion, responde las siguientes preguntas:
-      -¿Qué sucede si cambias el tiempo de resolución de la promesa a 5 segundos o a 1 segundo?
+      - ¿Qué sucede si cambias el tiempo de resolución de la promesa a 5 segundos o a 1 segundo?
       - ¿Cómo se comporta la función si la promesa es rechazada en lugar de resuelta?
       - ¿Puedes modificar la función para que el callback maneje diferentes tipos de información dependiendo del resultado de la promesa?
 
