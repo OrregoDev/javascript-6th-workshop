@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Event Loop</title>
+  <style>
+    img {
+      block-size: 350px;
+    }
+
+    p {
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Visualización del Event Loop</h1>
+  <hr>
+  <h2>¿Qué tareas se consideran macrotareas y cuáles son microtareas?</h2>
+  <p>En este caso se consideran microtareas las promesas y macrotareas los setTimeout</p>
+  <img
+    src="images/macro_and_micro_tasks.png"
+    alt=""
+  >
+  <h2>¿Cómo se relacionan las macrotareas y microtareas con el event loop?</h2>
+  <p>El event loop selecciona la Microtarea más antigua de la Cola de Microtareas y la ejecuta hasta que el callstack
+    esté vacío. A continuacion repite el proceso hasta que la cola de microtareas esté vacía. A continuación, hace lo
+    mismo con las
+    Macrotareas</p>
+  <img
+    src="images/task_queue_and_event_loop.png"
+    alt=""
+  >
+  <h2>¿Qué sucede cuando una microtarea genera una nueva macrotarea dentro de ella?</h2>
+  <p> En este caso la microtarea 1 se ejecuta como promesa, se añade la macrotarea que se encuentra dentro de la misma a
+    la Task Queue y la ejecuta cuando se ejecutan las demas macrotareas</p>
+  <img
+    src="images/macrotask_inside_microtask.png"
+    alt=""
+  >
+  <h2>¿Cómo se manejan las promesas y los setTimeout en relación con el event loop?</h2>
+  <p>Las promesas se manejan como micro tareas, por ende siempre se van a ejecutar primero que los setTimeout ya que
+    estos ultimos generan macro tareas, inclusive si el setTimeout tiene un tiempo de espera de 0 sesgundos, no se
+    ejecutara
+    hasta que se hayan terminado de ejecutarse las microtareas</p>
+  <hr>
+</body>
+
+</html>
