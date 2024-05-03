@@ -1,6 +1,8 @@
 // Ejercicio 11
 
 const url = 'data.json';
+let rooms, roomTypes;
+const bookings = [];
 
 function getNumber(promptMessage, options = {}) {
   while (true) {
@@ -12,24 +14,7 @@ function getNumber(promptMessage, options = {}) {
   }
 }
 
-function getOption({
-  optionsArray,
-  promptMessage,
-  invalidMessage = 'Please enter a valid option.',
-}) {
-  const formattedListString = optionsArray
-    .map((element, index) => `${index + 1}. ${element}`)
-    .join('\n');
-
-  while (true) {
-    const option = getNumber(`${promptMessage}\n` + formattedListString);
-    const isValidOption = option && option > 0 && option <= optionsArray.length;
-    if (isValidOption) return optionsArray[option - 1];
-    alert(invalidMessage);
-  }
-}
-
-function getDate({ promptMessage, timeString }) {
+function getDate({ promptMessage, timeString = 'T13:00:00' }) {
   const dateFormat = 'yyyy-mm-dd';
   while (true) {
     const date = prompt(`${promptMessage} Format: ${dateFormat}`) + timeString;
@@ -45,3 +30,89 @@ function idGenerator(initialId) {
   };
 }
 const generateId = idGenerator(1);
+
+function showMenu() {
+  let isMenuOpened = true;
+  while (isMenuOpened) {
+    const userOption = getNumber(
+      'Welcome to our booking system! \nPlease enter the number of the action that you would like to do: \n\n1.Book \n2.Check available rooms \n3.Check my bookings \n4.Cancel booking \n5.Modify booking \n6.Exit'
+    );
+    switch (userOption) {
+      case 6: {
+        isMenuOpened = false;
+        break;
+      }
+      case 1: {
+        // 1. Ask how many guests they are
+        const guestsNumber = getNumber('Enter the number of guests');
+        // 2. Filter the room types that fulfill the capacity
+        const possibleRoomTypes = roomTypes.filter(
+          (roomType) => roomType.capacity >= guestsNumber
+        );
+        console.log({ possibleRoomTypes, roomTypes });
+        // 3. Filter rooms that have the type needed
+        const availableRooms = rooms.filter((room) => {
+          const roomHasCapacity = possibleRoomTypes.some(
+            (roomType) => room.roomTypeId === roomType.id
+          );
+          return room.availability && roomHasCapacity;
+        });
+        console.log(availableRooms);
+        // 4. Show the client the available rooms that meet their capacity
+        const roomNumber = getNumber(
+          'Ingrese el numero de habitacion a reservar: ' +
+            availableRooms
+              .map((room) => {
+                return `\nRoom Number: ${room.number} (${
+                  roomTypes.find((type) => type.id === room.type).name
+                })`;
+              })
+              .join(', ')
+        );
+        // 5. Once the user choose a valid room option, ask his name to put the booking on his behalf
+        prompt('Enter your full name please:').toLowerCase;
+        // 6. Create booking and change room availability
+        // 7. Let the user know that thet booking was succesfully made
+      }
+    }
+  }
+}
+function loadAndShowData() {
+  // Retorna una nueva promesa que se resuelve después del setTimeout
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // Realiza la solicitud fetch dentro del setTimeout
+      fetch(url)
+        .then((response) => {
+          console.log({ response });
+          if (!response.ok) {
+            throw new Error('Error al cargar los datos.');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Habitaciones:', data.rooms);
+          console.log('Tipos de Habitaciones:', data.roomTypes);
+          resolve(data); // Resuelve la promesa con los datos cargados
+        })
+        .catch((error) => {
+          console.error(error);
+          reject(error); // Rechaza la promesa si hay un error
+        });
+    }, 1500);
+  });
+}
+
+// Llamar a la función para cargar y mostrar el contenido de data.json
+loadAndShowData()
+  .then(({ rooms: fetchedRooms, roomTypes: fetchedRoomTypes }) => {
+    rooms = fetchedRooms;
+    roomTypes = fetchedRoomTypes;
+    showMenu();
+    // Mostrar el contenido de las habitaciones después de cargar los datos
+
+    // ... Continuar con la lógica de la app
+  })
+  .catch((error) => {
+    console.error('Error al manejar la promesa:', error);
+  });
