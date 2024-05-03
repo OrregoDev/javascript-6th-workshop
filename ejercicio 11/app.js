@@ -17,7 +17,8 @@ function getNumber(promptMessage, options = {}) {
 function getDate({ promptMessage, timeString = 'T13:00:00' }) {
   const dateFormat = 'yyyy-mm-dd';
   while (true) {
-    const date = prompt(`${promptMessage} Format: ${dateFormat}`) + timeString;
+    const dateInput =
+      prompt(`${promptMessage} Format: ${dateFormat}`) + timeString;
     const isValidDate = !Number.isNaN(Date.parse(dateInput));
     if (isValidDate) return new Date(dateInput);
     alert('Please enter a valid date.');
@@ -59,18 +60,41 @@ function showMenu() {
         });
         console.log(availableRooms);
         // 4. Show the client the available rooms that meet their capacity
+        const availableRoomsAsString = availableRooms
+          .map((room) => {
+            const roomType = roomTypes.find(
+              (type) => type.id === room.roomTypeId
+            );
+            return `\nRoom Number: ${room.number} (${roomType.name})`;
+          })
+          .join(', ');
+
         const roomNumber = getNumber(
           'Ingrese el numero de habitacion a reservar: ' +
-            availableRooms
-              .map((room) => {
-                return `\nRoom Number: ${room.number} (${
-                  roomTypes.find((type) => type.id === room.type).name
-                })`;
-              })
-              .join(', ')
+            availableRoomsAsString
         );
+        const roomToBook = rooms.find((room) => room.number === roomNumber);
+        console.log(roomToBook);
         // 5. Once the user choose a valid room option, ask his name to put the booking on his behalf
-        prompt('Enter your full name please:').toLowerCase;
+        const guestName = prompt('Enter your full name please:').toLowerCase();
+        // 6. Ask for the dates
+        let checkInDate, checkOutDate;
+        while (true) {
+          const checkInDate = getDate({
+            promptMessage: 'Please enter the check in date of your booking: ',
+          });
+          const checkOutDate = getDate({
+            promptMessage: 'Please enter the check out date of your booking: ',
+          });
+          if (checkOutDate > checkInDate) {
+            break;
+          }
+          alert('The check out date must be before the check in date.');
+        }
+        const booking = {
+          id: generateId(),
+          guestName,
+        };
         // 6. Create booking and change room availability
         // 7. Let the user know that thet booking was succesfully made
       }
